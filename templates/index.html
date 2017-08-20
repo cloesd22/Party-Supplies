@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	  <link rel="stylesheet" type="text/css" href="../static/PSaaS.css">
+
+    <meta charset="UTF-8">
+    <title>PSaaS - Party Supplies as a service</title>
+  </head>
+  <body>
+		
+	<div class="wide">
+		<div class="col-xs-5"></div>
+		<div class="col-xs-2"><div class="tagline"> Party Supplies as a Service</div></div>
+		<div class="col-xs-5"></div>
+	</div>
+		
+	<div class="container">
+		<div id="panelDisplay" class="row" style="justify-content: center;">
+			<!--Panel Display Area-->
+			<noscript>Your browser does not support Javascript! Without Javascript this WebApp will not function.</noscript>
+		</div>
+
+
+
+  		<div class="controlPanel">
+  			<h3 style="text-align: center; padding: 20px;">What party supplies do you want to order?</h3>
+
+					<div class="row PanelElement">
+							<h4 class="col-xs-12 col-sm-4 prompttext">What</h4>
+							<div class="radio">
+								<label><input type="radio" name="optradio" id="r1" checked="checked"> Beers</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="optradio" id="r2"> Balloons</label>
+							</div>
+							<div class="radio">
+								<label><input type="radio" name="optradio" id="r3"> Chips</label>
+							</div>
+					</div>
+
+					<div class="row PanelElement">
+						<h4 class="col-xs-12 col-sm-4 prompttext">Amount</h4>
+						<input type="text" style="width:400px;" class="form-control" id="itemAmount">
+					</div>
+
+					<div class="row PanelElement">
+						<h4 class="col-xs-12 col-sm-4 prompttext">Who</h4>
+						<input type="text" style="width:400px;" class="form-control" id="itemOrderBy">
+					</div>
+
+					<div class="row PanelElement" style="justify-content: center">
+						<button id="orderNow" class="btn btn-success">Order Now!</button>
+					</div>
+		</div>
+	</div>
+  </body>
+
+<script type="text/javascript" src="../static/ajax.js"></script>
+</html>

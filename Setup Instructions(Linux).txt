@@ -1,0 +1,39 @@
+Python Setup:
+
+Create a folder for the server, <virtualENVs> to house virtualENVs
+
+Make sure you have python pip and virtualenv installed:
+--------------------------
+
+Install pip 
+	sudo apt-get install python-pip
+
+Use pip to install virtualenv
+	Pip install virtualenv
+	
+------------------------
+
+Make virtualenv in the folder you made.
+	virtualenv <nameofvirtualEnv>
+	eg. Virtualenv PSAASPY
+
+Activate the virtualEnv
+	Source <foldername>/bin/activate
+
+Install dependencies from requirements file
+	Put requirements.txt from the PythonENV folder into the virtualenvs folder, in the folder you created STEP1.
+	sudo pip install –r requirements.txt
+
+Start the server from virtualenv
+	Python <location of main.py>
+	
+	Eg. if folder was created in the 'TakeAwayProduction' folder
+	python ../server/main.py
+	(if )
+	alternatively:
+		
+	
+Server is now running load browser at 127.0.0.1 (or server location).
+	
+				
+	

@@ -1,0 +1,86 @@
+@import "css/bootstrap.min.css";
+
+.wide {
+  width:100%;
+  height:200px;
+  background-image:url('./img/party.jpg');
+  background-size:cover;
+}
+
+.wide img {
+  width:100%;
+}
+
+
+.tagline{
+  color:#fff;
+  font-weight:800;
+  font-size:25pt;
+  padding:25px;
+  text-align:center;
+}
+
+.orderPanel{
+	height:auto;
+	width:300px;
+	border-radius: 5px 5px 5px 5px;
+	box-shadow: 1px 1px 1px 1px;
+    position:relative;
+}
+
+.panelGreen{
+    background-color: #45EA55;
+}
+
+.panelOrange{
+    background-color: #EA611E;
+}
+
+.panelYellow{
+    background-color: #FFF553;
+}
+
+.panelFont {
+	font-weight:normal;
+	color:#000000;
+	letter-spacing:1pt;
+	word-spacing:8pt;
+	font-size:18px;
+	text-align:left;
+	font-family:helvetica,
+	sans-serif;
+	line-height:2;
+}
+
+.rightText {
+    position:absolute;
+    bottom:50%;
+    right:0%;
+}
+
+.controlPanel{
+	height:auto;
+	min-width:128px;
+	max-width:700px;
+	margin-top:30px;
+	margin-bottom:30px;
+	margin-right: auto;
+	margin-left: auto;
+	border-top:1px solid gray;
+}
+
+.PanelElement{
+    padding: 20px;
+    max-width:700px;
+}
+
+.prompttext{
+	color:gray;
+}
+
+.radio{
+	padding-left:15px;
+	padding-right:15px;
+}
+
+
