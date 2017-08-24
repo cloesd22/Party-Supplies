@@ -67,7 +67,6 @@ function winload(){
                 if (objRequest.readyState == 4 & objRequest.status==200){
                     console.log("Data Sent");
                     localStateCode = parseInt(localStateCode)+1;
-
                 }
             };
 
@@ -80,6 +79,9 @@ function winload(){
             document.getElementById("itemOrderBy").value = '';
         });
     }
+
+
+
 
     function updateServerStateCode(callback){
     //Updates the global statecode variable with the servers current state.
@@ -111,6 +113,7 @@ function winload(){
             if (objRequest.readyState == 4 & objRequest.status==200){
                  objRequest.onload=function(){
                     var ourData = JSON.parse(objRequest.responseText);
+                    console.log(objRequest.responseText)
                     serverStateCode = ourData.stateCode;
                     localStateCode = serverStateCode;
                     renderPanels(ourData.orderList);
@@ -124,22 +127,22 @@ function winload(){
 
         function renderPanels(data){
         //Draws order panels based on input data from GET request
-
+        console.log(data);
             var htmlString="";
             for (i=0;i<data.length;i++)
             {
                 switch (data[i].itemName) {
                 //panel color selector
                     case 'Beers':
-                         htmlString += " <div class='orderPanel panelGreen' style='margin: 25px; padding:5px;'>";
+                         htmlString += " <div class='orderPanel panelBeers' style='margin: 15px; padding:5px;'>";
                          break;
 
                     case 'Chips':
-                         htmlString += " <div class='orderPanel panelYellow' style='margin: 25px; padding:5px;'>";
+                         htmlString += " <div class='orderPanel panelChips' style='margin: 15px; padding:5px;'>";
                          break;
 
                     case 'Balloons':
-                         htmlString += " <div class='orderPanel panelOrange' style='margin: 25px; padding:5px;'>";
+                         htmlString += " <div class='orderPanel panelBalloons' style='margin: 15px; padding:5px;'>";
                          break;
                 }
 
@@ -149,6 +152,7 @@ function winload(){
                 htmlString += "</div>";
             }
             displayArea.innerHTML=(htmlString);
+            console.log(htmlString);
         };
 
 
