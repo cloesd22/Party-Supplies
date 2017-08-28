@@ -1,4 +1,4 @@
-function getInput(){
+export function getInput(){
 
 	var itemSelected = 'Beers';
     //Default radio button is set to Beers.
@@ -14,7 +14,7 @@ function getInput(){
     return {"itemSelected":itemSelected,"itemAmount":itemAmount,"itemOrderBy":itemOrderBy}
 }
 
-function Validate(inputObject){
+export function Validate(inputObject){
 
    //Check for empty fields
    var itemAmount = inputObject.itemAmount;

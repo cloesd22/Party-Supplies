@@ -1,4 +1,4 @@
-function serverGET(url, callback){
+export function serverGET(url, callback){
 //performs an AJAX GET request from the server
 //inputs: request url, callback, returns data
     var serverResponse;
@@ -28,7 +28,7 @@ function serverGET(url, callback){
 }
 
 
-function serverPOST (url, callback,data){
+export function serverPOST (url, callback,data){
 //performs an AJAX POST request to the server
 //inputs: request url, callback, data to send
     var serverResponse;

@@ -1,4 +1,4 @@
-function htmlDisplayDraw(displayJsonString){
+export function htmlDisplayDraw(displayJsonString){
 
 	var htmlString="";
 	var rawdata = JSON.parse(displayJsonString)

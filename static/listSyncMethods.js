@@ -1,9 +1,9 @@
-serverListSync(){
+export serverListSync(){
 	localList = serverGET('/list');
 	return "Sync Successful";
 }
 
-serverListMatchCheck(localList){
+export serverListMatchCheck(localList){
 
 	var syncStatus;
 

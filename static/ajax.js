@@ -1,3 +1,4 @@
+
 function winload(){
 //Runs on window open declaring display area, and setting button press functionality.
 
