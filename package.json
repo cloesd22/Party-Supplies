@@ -1,0 +1,24 @@
+{
+  "name": "takeawayparty",
+  "version": "1.0.0",
+  "description": "**INSTALLATION INSTRUCTIONS**",
+  "main": "index.js",
+  "dependencies": {
+    "webpack": "^3.5.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack ./static/main.js ./static/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cloesd22/Party-Supplies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cloesd22/Party-Supplies/issues"
+  },
+  "homepage": "https://github.com/cloesd22/Party-Supplies#readme"
+}

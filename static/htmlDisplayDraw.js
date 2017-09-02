@@ -4,20 +4,20 @@ export function htmlDisplayDraw(displayJsonString){
 	var rawdata = JSON.parse(displayJsonString)
 	rawdata = rawdata.orderList;
 
-            for (i=0;i<rawdata.length;i++)
+            for (var i=0;i<rawdata.length;i++)
             {	
                 switch (rawdata[i].itemName) {
                 //panel color selector
                     case 'Beers':
-                         htmlString += " <div class='orderPanel panelGreen' style='margin: 25px; padding:5px;'>";
+                         htmlString += " <div class='orderPanel panelBeers' style='margin: 25px; padding:5px;'>";
                          break;
 
                     case 'Chips':
-                         htmlString += " <div class='orderPanel panelYellow' style='margin: 25px; padding:5px;'>";
+                         htmlString += " <div class='orderPanel panelChips' style='margin: 25px; padding:5px;'>";
                          break;
 
                     case 'Balloons':
-                         htmlString += " <div class='orderPanel panelOrange' style='margin: 25px; padding:5px;'>";
+                         htmlString += " <div class='orderPanel panelBalloons' style='margin: 25px; padding:5px;'>";
                          break;
                 }
 

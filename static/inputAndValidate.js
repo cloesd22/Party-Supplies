@@ -14,7 +14,7 @@ export function getInput(){
     return {"itemSelected":itemSelected,"itemAmount":itemAmount,"itemOrderBy":itemOrderBy}
 }
 
-export function Validate(inputObject){
+export function validate(inputObject){
 
    //Check for empty fields
    var itemAmount = inputObject.itemAmount;

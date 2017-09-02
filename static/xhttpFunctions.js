@@ -6,16 +6,20 @@ export function serverGET(url, callback){
 
     if (window.XMLHttpRequest){
         var requestObject = new XMLHttpRequest();
+ 
+
     }else{
         var requestObject = new ActiveXObject("Microsoft.XMLHTTP");
     }
 
     requestObject.onreadystatechange = function(){
 
-        if (requestObject.readState==4 & requestObject.status==200){
+        if (requestObject.readyState==4 & requestObject.status==200){
+            
             requestObject.onload=function(){
-                serverResponse = objRequest.responseText;
-                if (callback) callback();
+                serverResponse = requestObject.responseText;
+                if (callback) callback(serverResponse);
+                           
             }
 
         }
