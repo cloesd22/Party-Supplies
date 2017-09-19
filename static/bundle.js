@@ -69,7 +69,7 @@
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = serverGET;
-/* unused harmony export serverPOST */
+/* harmony export (immutable) */ __webpack_exports__["b"] = serverPOST;
 function serverGET(url, callback){
 //performs an AJAX GET request from the server
 //inputs: request url, callback, returns data
@@ -144,7 +144,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__listSyncMethods_js__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__xhttpFunctions_js__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__htmlDisplayDraw__ = __webpack_require__(3);
-throw new Error("Cannot find module \"/inputAndValidate.js\"");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__inputAndValidate__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__addOrder__ = __webpack_require__(5);
+
+
 
 
 
@@ -153,34 +156,42 @@ throw new Error("Cannot find module \"/inputAndValidate.js\"");
 
 function winload(){
 
-    var displayArea = document.getElementById("panelDisplay");
-    var btn = document.getElementById("orderNow");
-
-    var serverStateCode='0';
-    var localStateCode='0';
-    var localServerList;
+	var displayArea = document.getElementById("panelDisplay");
+	var btn = document.getElementById("orderNow");
+	var doc = document;
 
 	//load up panels on start
-	Object(__WEBPACK_IMPORTED_MODULE_0__listSyncMethods_js__["a" /* serverListSync */])().then((data)=>{
-
-		localServerList = JSON.stringify(data);
-
-		var displayString = Object(__WEBPACK_IMPORTED_MODULE_2__htmlDisplayDraw__["a" /* htmlDisplayDraw */])(localServerList)
-
-		displayArea.innerHTML=(displayString);
-
-	})
-
+	refreshPanels(displayArea);
 
 	//on button click add to server
+
+	//TO DO LIST: THis is where we're up to: Try to debug the input and Validate script there's an error in there.
+	
 	btn.addEventListener("click", function(){
+		var userInput = Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["a" /* getInput */])(doc);
+		if (Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["b" /* validate */])(userInput,doc)){
 
+			Object(__WEBPACK_IMPORTED_MODULE_4__addOrder__["a" /* addOrder */])(userInput,()=>{
+				refreshPanels(displayArea);
+			})
 
+		}
 	});
 
 
 }
 window.onload = winload;
+
+
+function refreshPanels(display){
+	//refresh panels
+	Object(__WEBPACK_IMPORTED_MODULE_0__listSyncMethods_js__["a" /* serverListSync */])().then((data)=>{
+		var localServerList = JSON.stringify(data);
+		var displayString = Object(__WEBPACK_IMPORTED_MODULE_2__htmlDisplayDraw__["a" /* htmlDisplayDraw */])(localServerList)
+		display.innerHTML=(displayString);
+	})
+
+}
 
 /***/ }),
 /* 2 */
@@ -282,6 +293,85 @@ function htmlDisplayDraw(displayJsonString){
 
         return htmlString;
 };
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getInput;
+/* harmony export (immutable) */ __webpack_exports__["b"] = validate;
+function getInput(doc){
+
+	var itemSelected = 'Beers';
+    //Default radio button is set to Beers.
+    if (doc.getElementById('r2').checked) {
+       itemSelected = 'Balloons';
+    }else if (doc.getElementById('r3').checked){
+        itemSelected = 'Chips';
+    }
+
+    var itemAmount = doc.getElementById("itemAmount").value;
+    var itemOrderBy = doc.getElementById("itemOrderBy").value;
+
+    return {"itemSelected":itemSelected,"itemAmount":itemAmount,"itemOrderBy":itemOrderBy}
+}
+
+function validate(inputObject,doc){
+
+   //Check for empty fields
+   var itemAmount = inputObject.itemAmount;
+   var itemOrderBy = inputObject.itemOrderBy;
+   var validation = true;
+
+
+        if ((itemOrderBy) == ""){
+            doc.getElementById("validationMsgAmount").value = "Please fill in this field.";
+            validation = false;
+        }
+
+        if ((itemAmount) == ""){
+          	doc.getElementById("validationMsgWho").value = "Please fill in this field.";
+    	 	validation = false;
+        }
+
+        //Check amount is a number between 1 and 10
+        if (isNaN(itemAmount)||itemAmount>10||itemAmount<1){
+            doc.getElementById("validationMsgAmount").value = "Please ensure amount is a number between 1 and 10";
+            validation = false;
+        }
+
+        //Check of itemOrderBy field is a name
+        var regex = /^([A-Za-z0-9]{3,20})$/;
+        if (regex.test(itemOrderBy)==false){
+        	doc.getElementById("validationMsgWho").value = "Please ensure 'Who' field only consists of 3 to 20 letters/numbers.";
+            validation = false;
+        }
+
+        return validation;
+}
+
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = addOrder;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__xhttpFunctions_js__ = __webpack_require__(0);
+
+
+function addOrder(data,callback){
+	//Makes a POST request when called pushing the data to the server.
+
+	data = JSON.stringify(data);
+	
+	Object(__WEBPACK_IMPORTED_MODULE_0__xhttpFunctions_js__["b" /* serverPOST */]) ('/add',null,data);
+	callback();
+
+
+}
 
 /***/ })
 /******/ ]);

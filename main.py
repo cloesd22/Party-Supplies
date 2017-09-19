@@ -30,6 +30,7 @@ class Order(object):
 
 @app.route('/add', methods=['POST'])
 def addOrder():
+    print(request.data);
     newOrderItem = jsonpickle.decode(request.data);
     orderList.append(createOrder(newOrderItem['itemSelected'], newOrderItem['itemOrderBy'], newOrderItem['itemAmount']));
     global stateCode
