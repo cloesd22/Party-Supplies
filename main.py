@@ -61,10 +61,8 @@ def get_tasks():
 
 @app.route('/captcha', methods=['POST'])
 def captchaGO():
-
-   secretKey = '6LeEjjEUAAAAANr9gpnbqrSJcv1udHd0M2caH_Ni';
    responsedata = request.data;
-   urlbuilding = {'secret':'6Ld4gTEUAAAAAJ350XUZu3iqrNoXMULF1mPk8eNp','response':responsedata};
+   urlbuilding = {'secret':'6LeEjjEUAAAAANr9gpnbqrSJcv1udHd0M2caH_Ni','response':responsedata};
    r = requests.post('https://www.google.com/recaptcha/api/siteverify',data=urlbuilding);
    return jsonpickle.encode(r.json(),unpicklable=False);
 
