@@ -2,6 +2,7 @@
 <html>
   <head>
 	  <link rel="stylesheet" type="text/css" href="../static/PSaaS.css">
+	  <script src='https://www.google.com/recaptcha/api.js'></script>
 
     <meta charset="UTF-8">
     <title>PSaaS - Party Supplies as a service</title>
@@ -51,11 +52,16 @@
 					</div>
 
 					<div class="row PanelElement" style="justify-content: center">
-						<button id="orderNow" class="btn btn-Order">Order Now!</button>
+						<button id="orderNow"
+						class="btn btn-Order g-recaptcha"
+						data-sitekey="6Ld4gTEUAAAAAD81MdRURzzgHUWKnHcMcXE9iyGq"
+						data-callback="YourOnSubmitFn"
+						>Order Now!</button>
 					</div>
 		</div>
 	</div>
   </body>
 
 <script type="text/javascript" src="../static/ajax.js"></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </html>
