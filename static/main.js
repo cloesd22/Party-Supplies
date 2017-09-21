@@ -5,7 +5,6 @@ import {getInput,validate} from './inputAndValidate';
 import {addOrder} from './addOrder';
 
 
-
 function winload(){
 
 	var displayArea = document.getElementById("panelDisplay");
@@ -19,17 +18,8 @@ function winload(){
 
 	//TO DO LIST: THis is where we're up to: Try to debug the input and Validate script there's an error in there.
 	
-	btn.addEventListener("click", function(){
-		var userInput = getInput(doc);
-		if (validate(userInput,doc)){
-			addOrder(userInput,()=>{
-				refreshPanels(displayArea);
-			})
 
-		}
-	});
-
-
+	
 }
 window.onload = winload;
 
@@ -41,5 +31,30 @@ function refreshPanels(display){
 		var displayString = htmlDisplayDraw(localServerList)
 		display.innerHTML=(displayString);
 	})
+
+}
+
+window.onCaptcha = function(token){
+
+	var doc = document;
+	var displayArea = document.getElementById("panelDisplay");
+	
+	serverPOST('/captcha',(res)=>{
+
+		var result = JSON.parse(res);
+		console.log(result.success);
+		if(result.success==true){
+			var userInput = getInput(doc);
+			if (validate(userInput,doc)){
+				addOrder(userInput,()=>{
+					refreshPanels(displayArea);
+				})
+			}
+		}else{
+			console.log('failcaptcha');
+		}
+
+
+	},token);
 
 }

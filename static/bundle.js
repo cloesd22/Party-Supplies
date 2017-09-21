@@ -118,10 +118,11 @@ function serverPOST (url, callback,data){
 
     requestObject.onreadystatechange = function(){
 
-        if (requestObject.readState==4 & requestObject.status==200){
+        if (requestObject.readyState==4 & requestObject.status==200){
             requestObject.onload=function(){
-                serverResponse = objRequest.responseText;
-                if (callback) callback();
+                serverResponse = requestObject.responseText;
+                console.log(serverResponse);
+                if (callback) callback(serverResponse);
             }
 
         }
@@ -153,7 +154,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
 function winload(){
 
 	var displayArea = document.getElementById("panelDisplay");
@@ -167,18 +167,8 @@ function winload(){
 
 	//TO DO LIST: THis is where we're up to: Try to debug the input and Validate script there's an error in there.
 	
-	btn.addEventListener("click", function(){
-		var userInput = Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["a" /* getInput */])(doc);
-		if (Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["b" /* validate */])(userInput,doc)){
 
-			Object(__WEBPACK_IMPORTED_MODULE_4__addOrder__["a" /* addOrder */])(userInput,()=>{
-				refreshPanels(displayArea);
-			})
-
-		}
-	});
-
-
+	
 }
 window.onload = winload;
 
@@ -192,6 +182,32 @@ function refreshPanels(display){
 	})
 
 }
+
+window.onCaptcha = function(token){
+
+	var doc = document;
+	var displayArea = document.getElementById("panelDisplay");
+	
+	Object(__WEBPACK_IMPORTED_MODULE_1__xhttpFunctions_js__["b" /* serverPOST */])('/captcha',(res)=>{
+
+		var result = JSON.parse(res);
+		console.log(result.success);
+		if(result.success==true){
+			var userInput = Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["a" /* getInput */])(doc);
+			if (Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["b" /* validate */])(userInput,doc)){
+				Object(__WEBPACK_IMPORTED_MODULE_4__addOrder__["a" /* addOrder */])(userInput,()=>{
+					refreshPanels(displayArea);
+				})
+			}
+		}else{
+			console.log('failcaptcha');
+		}
+
+
+	},token);
+
+}
+
 
 /***/ }),
 /* 2 */
@@ -369,7 +385,6 @@ function addOrder(data,callback){
 	
 	Object(__WEBPACK_IMPORTED_MODULE_0__xhttpFunctions_js__["b" /* serverPOST */]) ('/add',null,data);
 	callback();
-
 
 }
 

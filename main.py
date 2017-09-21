@@ -1,5 +1,7 @@
 from flask import Flask,render_template, request
 import jsonpickle
+import json
+import requests
 
 app = Flask(__name__)
 
@@ -56,6 +58,19 @@ def get_tasks():
     print(stateCode);
     sendPackage = {'stateCode':stateCode,'orderList':orderList};
     return jsonpickle.encode(sendPackage,unpicklable=False);
+
+@app.route('/captcha', methods=['POST'])
+def captchaGO():
+
+   secretKey = '6Ld4gTEUAAAAAJ350XUZu3iqrNoXMULF1mPk8eNp';
+   responsedata = request.data;
+
+   urlbuilding = {'secret':'6Ld4gTEUAAAAAJ350XUZu3iqrNoXMULF1mPk8eNp','response':responsedata};
+
+   r = requests.post('https://www.google.com/recaptcha/api/siteverify',data=urlbuilding);
+
+   return jsonpickle.encode(r.json(),unpicklable=False);
+
 #On GET request send list
 
 if __name__== "__main__":

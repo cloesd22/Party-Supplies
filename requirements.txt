@@ -3,6 +3,8 @@ Flask==0.12.2
 itsdangerous==0.24
 Jinja2==2.9.6
 jsonpickle==0.9.5
+requests==2.18.4
+requests
 MarkupSafe==1.0
 simplejson==3.11.1
 Werkzeug==0.12.2

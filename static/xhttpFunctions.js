@@ -46,10 +46,11 @@ export function serverPOST (url, callback,data){
 
     requestObject.onreadystatechange = function(){
 
-        if (requestObject.readState==4 & requestObject.status==200){
+        if (requestObject.readyState==4 & requestObject.status==200){
             requestObject.onload=function(){
-                serverResponse = objRequest.responseText;
-                if (callback) callback();
+                serverResponse = requestObject.responseText;
+                console.log(serverResponse);
+                if (callback) callback(serverResponse);
             }
 
         }

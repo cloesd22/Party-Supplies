@@ -3,6 +3,19 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/PSaaS.css">
 	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<script type="text/javascript" src="../static/bundle.js"></script>
+	<script>
+
+		function onSubmit(token) {
+			window.onCaptcha(token);
+		}
+
+		window.grecaptchaReset = function(){
+			grecaptcha.reset();
+		}
+
+	</script>
+
 	<meta charset="UTF-8">
 	<title>PSaaS - Party Supplies as a service</title>
 </head>
@@ -49,19 +62,19 @@
 				<input type="text" style="width:400px;" class="form-control" id="itemOrderBy">
 				<p id="validationMsgWho"></p>
 			</div>
-
-			<div class="row PanelElement" style="justify-content: center">
-				<button 
-				id="orderNow"
-				class="btn btn-Order g-recaptcha"
-				data-sitekey="6Ld4gTEUAAAAAD81MdRURzzgHUWKnHcMcXE9iyGq"
-				data-callback="onSubmit()">
-				Order Now!
-			</button>
+		
+				<div class="row PanelElement" style="justify-content: center">
+					<button 
+					id="orderNow"
+					class="btn btn-Order g-recaptcha"
+					data-sitekey="6Ld4gTEUAAAAAD81MdRURzzgHUWKnHcMcXE9iyGq"
+					data-callback="onSubmit">
+					Order Now!
+				</button>
+			</div>
 		</div>
-	</div>
 </div>
 </body>
 
-<script type="text/javascript" src="../static/bundle.js"></script>
+
 </html>
