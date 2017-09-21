@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-  <head>
-	  <link rel="stylesheet" type="text/css" href="../static/PSaaS.css">
+<head>
+	<link rel="stylesheet" type="text/css" href="../static/PSaaS.css">
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<meta charset="UTF-8">
+	<title>PSaaS - Party Supplies as a service</title>
+</head>
+<body>
 
-    <meta charset="UTF-8">
-    <title>PSaaS - Party Supplies as a service</title>
-  </head>
-  <body>
-		
 	<div class="wide">
 		<div class="col-xs-5"></div>
 		<div class="col-xs-2"><div class="display-4 text-center p-4" style="color:white"> Party Supplies as a Service</div></div>
 		<div class="col-xs-5"></div>
 	</div>
-		
+
 	<div class="container">
 		<div id="panelDisplay" class="row" style="justify-content: center;">
 			<!--Panel Display Area-->
@@ -22,40 +22,46 @@
 
 
 
-  		<div class="controlPanel">
-  			<h3 style="text-align: center; padding: 20px;">What party supplies do you want to order?</h3>
+		<div class="controlPanel">
+			<h3 style="text-align: center; padding: 20px;">What party supplies do you want to order?</h3>
 
-					<div class="row PanelElement">
-							<h4 class="col-xs-12 col-sm-4 prompttext">What</h4>
-							<div class="radio">
-								<label><input type="radio" name="optradio" id="r1" checked="checked"> Beers</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="optradio" id="r2"> Balloons</label>
-							</div>
-							<div class="radio">
-								<label><input type="radio" name="optradio" id="r3"> Chips</label>
-							</div>
-					</div>
+			<div class="row PanelElement">
+				<h4 class="col-xs-12 col-sm-4 prompttext">What</h4>
+				<div class="radio">
+					<label><input type="radio" name="optradio" id="r1" checked="checked"> Beers</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="optradio" id="r2"> Balloons</label>
+				</div>
+				<div class="radio">
+					<label><input type="radio" name="optradio" id="r3"> Chips</label>
+				</div>
+			</div>
 
-					<div class="row PanelElement">
-						<h4 class="col-xs-12 col-sm-4 prompttext">Amount</h4>
-						<input type="text" style="width:400px;" class="form-control" id="itemAmount">
-						<p id="validationMsgAmount"></p>
-					</div>
+			<div class="row PanelElement">
+				<h4 class="col-xs-12 col-sm-4 prompttext">Amount</h4>
+				<input type="text" style="width:400px;" class="form-control" id="itemAmount">
+				<p id="validationMsgAmount"></p>
+			</div>
 
-					<div class="row PanelElement">
-						<h4 class="col-xs-12 col-sm-4 prompttext">Who</h4>
-						<input type="text" style="width:400px;" class="form-control" id="itemOrderBy">
-						<p id="validationMsgWho"></p>
-					</div>
+			<div class="row PanelElement">
+				<h4 class="col-xs-12 col-sm-4 prompttext">Who</h4>
+				<input type="text" style="width:400px;" class="form-control" id="itemOrderBy">
+				<p id="validationMsgWho"></p>
+			</div>
 
-					<div class="row PanelElement" style="justify-content: center">
-						<button id="orderNow" class="btn btn-Order">Order Now!</button>
-					</div>
+			<div class="row PanelElement" style="justify-content: center">
+				<button 
+				id="orderNow"
+				class="btn btn-Order g-recaptcha"
+				data-sitekey="6Ld4gTEUAAAAAD81MdRURzzgHUWKnHcMcXE9iyGq"
+				data-callback="onSubmit()">
+				Order Now!
+			</button>
 		</div>
 	</div>
-  </body>
+</div>
+</body>
 
 <script type="text/javascript" src="../static/bundle.js"></script>
 </html>

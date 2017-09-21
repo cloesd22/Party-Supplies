@@ -8,5 +8,4 @@ export function addOrder(data,callback){
 	serverPOST ('/add',null,data);
 	callback();
 
-
 }

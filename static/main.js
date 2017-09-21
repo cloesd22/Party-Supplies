@@ -22,7 +22,6 @@ function winload(){
 	btn.addEventListener("click", function(){
 		var userInput = getInput(doc);
 		if (validate(userInput,doc)){
-
 			addOrder(userInput,()=>{
 				refreshPanels(displayArea);
 			})
