@@ -28,53 +28,102 @@
 	</div>
 
 	<div class="container">
-		<div id="panelDisplay" class="row" style="justify-content: center;">
+		<div id="panelDisplay" class="row my-auto" style="justify-content: center; padding-top: 50px;">
 			<!--Panel Display Area-->
 			<noscript>Your browser does not support Javascript! Without Javascript this WebApp will not function.</noscript>
 		</div>
+	</div>
 
 
+	<section style="margin-top: 150px" id="control-panel">
+		<div id="controlSection" class="controlSection">
+			<div class="dark-overlay">
+				<div class="container" style="padding-top: 50px;">
+					<div class="card bg-dark text-light text-center card-form">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-lg-12">
 
-		<div class="controlPanel">
-			<h3 style="text-align: center; padding: 20px;">What party supplies do you want to order?</h3>
+									<div class="d-flex flex-row">
+										<h2 class="display-5 m-auto p-2">What party supplies do you want to order?</h3>
+										</div>
 
-			<div class="row PanelElement">
-				<h4 class="col-xs-12 col-sm-4 prompttext">What</h4>
-				<div class="radio">
-					<label><input type="radio" name="optradio" id="r1" checked="checked"> Beers</label>
+										<div class="d-block-flex d-md-flex flex-row py-4 justify-content-between">
+
+											<div class="d-flex flex-col p-2 text-center text-justify text-md-left">
+												<legend>What would you like to order?</legend>
+											</div>
+
+											<div class="d-flex flex-col p-md-2 text-md-center justify-content-between align-self-center">
+												<div class="radio">
+													<label class="form-check-label"><input class="form-check-input" type="radio" name="optradio" id="r1" checked="checked"> Beers</label>
+												</div>
+												<div class="radio">
+													<label class="form-check-label"><input class="form-check-input" type="radio" name="optradio" id="r2"> Balloons</label>
+												</div>
+												<div class="radio">
+													<label class="form-check-label"><input class="form-check-input" type="radio" name="optradio" id="r3"> Chips</label>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="d-block-flex d-md-flex py-4 flex-row justify-content-between">
+											<div class="d-flex flex-col p-2 text-center text-md-left">
+												<legend>How many would you like to order?</legend>	
+											</div>
+											<div class="d-block-flex d-md-flex flex-col p-2 text-center text-md-left align-self-center">
+							
+												<input  type="number" min="1" max="10" style="min-width: 300px; max-height: 40px" class="form-control" id="itemAmount">
+											</div>
+										</div>
+
+										<div class="d-block-flex d-md-flex py-4 flex-row justify-content-between">
+											<div class="d-flex flex-col p-2 text-center text-md-left">
+												<legend>Who is ordering this?</legend>
+											</div>
+											<div class="d-block-flex d-md-flex flex-col p-2 text-center text-md-left align-self-center">
+				
+												<input type="text" style="min-width: 300px; max-height: 40px" class="form-control w-100" id="itemOrderBy">
+											</div>
+										</div>
+
+										<div class="d-flex flex-row py-4">
+											<div class="d-flex flex-col m-auto">
+												<div class="row PanelElement" style="justify-content: center">
+													<button 
+													id="orderNow"
+													class="btn btn-lg btn-Order g-recaptcha"
+													data-sitekey="6LeEjjEUAAAAADvHEKMPTNTW20cflb0YOsdYZSlw"
+													data-callback="onSubmit">
+													Add Suggestion
+												</button>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
 				</div>
-				<div class="radio">
-					<label><input type="radio" name="optradio" id="r2"> Balloons</label>
-				</div>
-				<div class="radio">
-					<label><input type="radio" name="optradio" id="r3"> Chips</label>
-				</div>
-			</div>
-
-			<div class="row PanelElement">
-				<h4 class="col-xs-12 col-sm-4 prompttext">Amount</h4>
-				<input type="text" style="width:400px;" class="form-control" id="itemAmount">
-				<p id="validationMsgAmount"></p>
-			</div>
-
-			<div class="row PanelElement">
-				<h4 class="col-xs-12 col-sm-4 prompttext">Who</h4>
-				<input type="text" style="width:400px;" class="form-control" id="itemOrderBy">
-				<p id="validationMsgWho"></p>
-			</div>
-		
-				<div class="row PanelElement" style="justify-content: center">
-					<button 
-					id="orderNow"
-					class="btn btn-Order g-recaptcha"
-					data-sitekey="6LeEjjEUAAAAADvHEKMPTNTW20cflb0YOsdYZSlw"
-					data-callback="onSubmit">
-					Order Now!
-				</button>
-			</div>
-		</div>
-</div>
-</body>
+			</div>	
+		</section>
 
 
-</html>
+  <footer id="main-footer" class="bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <div class="py-4">
+            <p>Demonstration Project Manoj Kumar 2017</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+	</body>
+
+
+	</html>

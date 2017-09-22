@@ -49,7 +49,6 @@ export function serverPOST (url, callback,data){
         if (requestObject.readyState==4 & requestObject.status==200){
             requestObject.onload=function(){
                 serverResponse = requestObject.responseText;
-                console.log(serverResponse);
                 if (callback) callback(serverResponse);
             }
 

@@ -127,3 +127,26 @@ fieldset[disabled] .btn-Order.active {
   background-color: #07171f;
   border-color: #07171f;
 }
+
+#controlSection{
+
+  background:url('./img/controlbox.jpeg') no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
+  min-height: 700px;
+
+}
+
+#controlSection.dark-overlay{
+    background-color:rgba(0,0,0,0.7);
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    min-height:700px;
+}
+
+.card-form{
+  opacity:0.95;
+  color:white;
+}

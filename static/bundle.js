@@ -121,7 +121,6 @@ function serverPOST (url, callback,data){
         if (requestObject.readyState==4 & requestObject.status==200){
             requestObject.onload=function(){
                 serverResponse = requestObject.responseText;
-                console.log(serverResponse);
                 if (callback) callback(serverResponse);
             }
 
@@ -163,12 +162,7 @@ function winload(){
 	//load up panels on start
 	refreshPanels(displayArea);
 
-	//on button click add to server
-
-	//TO DO LIST: THis is where we're up to: Try to debug the input and Validate script there's an error in there.
-	
-
-	
+		
 }
 window.onload = winload;
 
@@ -191,16 +185,26 @@ window.onCaptcha = function(token){
 	Object(__WEBPACK_IMPORTED_MODULE_1__xhttpFunctions_js__["b" /* serverPOST */])('/captcha',(res)=>{
 
 		var result = JSON.parse(res);
-		console.log(result.success);
 		if(result.success==true){
 			var userInput = Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["a" /* getInput */])(doc);
 			if (Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["b" /* validate */])(userInput,doc)){
 				Object(__WEBPACK_IMPORTED_MODULE_4__addOrder__["a" /* addOrder */])(userInput,()=>{
 					refreshPanels(displayArea);
+					try{
+						grecaptcha.reset();
+					}catch(err){
+						console.log("Captcha styling insivible");
+					}
+					
 				})
 			}
 		}else{
-			console.log('failcaptcha');
+			console.log('Captcha-Failed');
+			try{
+				grecaptcha.reset();
+			}catch(err){
+				console.log("Captcha styling insivible");
+			}
 		}
 
 
@@ -294,7 +298,7 @@ function htmlDisplayDraw(displayJsonString){
 
                 htmlString += "<div><p class='panelFont' style='padding-left: 15px;'> " +  rawdata[i].itemName + "</p></div>";
                 htmlString += " <div class='panelFont rightText' style='padding-right: 15px;'><p>" + rawdata[i].quantity  + "  </p> </div>";
-                htmlString += "<div><p class='panelFont' style='padding-left: 15px;'> Ordered By: <b>" + rawdata[i].orderedBy  + "</b></p></div>";
+                htmlString += "<div><p class='panelFont' style='padding-left: 15px;'> Suggested By: <b>" + rawdata[i].orderedBy  + "</b></p></div>";
                 htmlString += "</div>";
 
             }

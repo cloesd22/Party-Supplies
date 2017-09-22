@@ -23,7 +23,7 @@ export function htmlDisplayDraw(displayJsonString){
 
                 htmlString += "<div><p class='panelFont' style='padding-left: 15px;'> " +  rawdata[i].itemName + "</p></div>";
                 htmlString += " <div class='panelFont rightText' style='padding-right: 15px;'><p>" + rawdata[i].quantity  + "  </p> </div>";
-                htmlString += "<div><p class='panelFont' style='padding-left: 15px;'> Ordered By: <b>" + rawdata[i].orderedBy  + "</b></p></div>";
+                htmlString += "<div><p class='panelFont' style='padding-left: 15px;'> Suggested By: <b>" + rawdata[i].orderedBy  + "</b></p></div>";
                 htmlString += "</div>";
 
             }

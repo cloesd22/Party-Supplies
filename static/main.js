@@ -14,12 +14,7 @@ function winload(){
 	//load up panels on start
 	refreshPanels(displayArea);
 
-	//on button click add to server
-
-	//TO DO LIST: THis is where we're up to: Try to debug the input and Validate script there's an error in there.
-	
-
-	
+		
 }
 window.onload = winload;
 
@@ -42,16 +37,26 @@ window.onCaptcha = function(token){
 	serverPOST('/captcha',(res)=>{
 
 		var result = JSON.parse(res);
-		console.log(result.success);
 		if(result.success==true){
 			var userInput = getInput(doc);
 			if (validate(userInput,doc)){
 				addOrder(userInput,()=>{
 					refreshPanels(displayArea);
+					try{
+						grecaptcha.reset();
+					}catch(err){
+						console.log("Captcha styling insivible");
+					}
+					
 				})
 			}
 		}else{
-			console.log('failcaptcha');
+			console.log('Captcha-Failed');
+			try{
+				grecaptcha.reset();
+			}catch(err){
+				console.log("Captcha styling insivible");
+			}
 		}
 
 
