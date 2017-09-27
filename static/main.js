@@ -90,8 +90,8 @@ window.onCaptcha = function(){
 	var userInput = getInput(doc);
 	if (validate(userInput,doc)){
 			addOrder(userInput,()=>{
-				refreshPanels(displayArea);
 				clearInputs();
+				refreshPanels(displayArea);
 		window.scrollTo(0, 0);
 		})
 	}else{
