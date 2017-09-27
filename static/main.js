@@ -96,6 +96,7 @@ window.onCaptcha = function(){
 		})
 	}else{
 		alert("Please limit names to letters and spaces. No symbols.");
+		console.log("push failed due to invalid character entry");
 	}
 }
 
