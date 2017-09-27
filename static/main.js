@@ -10,9 +10,14 @@ function winload(){
 	var displayArea = document.getElementById("panelDisplay");
 	var btn = document.getElementById("orderNow");
 	var doc = document;
-
+	document.getElementById('orderNow').disabled=true;
+	addfieldListeners();
 	//load up panels on start
 	refreshPanels(displayArea);
+	
+	
+
+
 
 		
 }
@@ -21,6 +26,7 @@ window.onload = winload;
 function refreshPanels(display){
 	//refresh panels
 	var doc = document;
+	window.scrollTo(0, 0);
 	serverListSync().then((data)=>{
         console.log(data.orderList.length > 0);
 	    if(data.orderList.length > 0){
@@ -34,6 +40,7 @@ function refreshPanels(display){
 
 		var displayString = htmlDisplayDraw(localServerList)
 		display.innerHTML=(displayString);
+		
 	})
 
 }
@@ -43,6 +50,8 @@ window.onCaptcha = function(token){
 	var doc = document;
 	var displayArea = document.getElementById("panelDisplay");
 	
+	
+
 	serverPOST('/captcha',(res)=>{
 
 		var result = JSON.parse(res);
@@ -51,6 +60,7 @@ window.onCaptcha = function(token){
 			if (validate(userInput,doc)){
 				addOrder(userInput,()=>{
 					refreshPanels(displayArea);
+					clearInputs();
 					try{
 						grecaptcha.reset();
 					}catch(err){
@@ -71,4 +81,47 @@ window.onCaptcha = function(token){
 
 	},token);
 
+}
+
+function addfieldListeners(){
+	// Listens to input fields and disables button if they are empty
+	// Server side validaiton throws an error if empty values are submited.
+	document.getElementById('itemAmount').addEventListener("keypress",()=>{
+		if((document.getElementById('itemAmount').value.length!=0)&&(document.getElementById('itemOrderBy').value.length!=0)){
+			document.getElementById('orderNow').disabled=false;
+
+		}else{
+			document.getElementById('orderNow').disabled=true;
+		}
+	})
+	document.getElementById('itemOrderBy').addEventListener("keypress",()=>{
+		if((document.getElementById('itemAmount').value.length!=0)&&(document.getElementById('itemOrderBy').value.length!=0)){
+			document.getElementById('orderNow').disabled=false;
+
+		}else{
+			document.getElementById('orderNow').disabled=true;
+		}
+	})
+
+	document.getElementById('itemAmount').addEventListener("blur",()=>{
+		if((document.getElementById('itemAmount').value.length!=0)&&(document.getElementById('itemOrderBy').value.length!=0)){
+			document.getElementById('orderNow').disabled=false;
+
+		}else{
+			document.getElementById('orderNow').disabled=true;
+		}
+	})
+	document.getElementById('itemOrderBy').addEventListener("blur",()=>{
+		if((document.getElementById('itemAmount').value.length!=0)&&(document.getElementById('itemOrderBy').value.length!=0)){
+			document.getElementById('orderNow').disabled=false;
+
+		}else{
+			document.getElementById('orderNow').disabled=true;
+		}
+	})
+}
+
+function clearInputs(){
+	document.getElementById('itemAmount').value="";
+	document.getElementById('itemOrderBy').value="";
 }

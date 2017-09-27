@@ -7,7 +7,8 @@
 	<script>
 
 		function onSubmit(token) {
-			window.onCaptcha(token);
+
+				window.onCaptcha(token);	
 		}
 
 		window.grecaptchaReset = function(){
@@ -45,7 +46,7 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-lg-12">
-
+									<form>
 									<div class="d-flex flex-row">
 										<h2 style="visibility:hidden" class="display-5 m-auto p-2">What party supplies do you want to order?</h3>
 										</div>
@@ -76,7 +77,7 @@
 											</div>
 											<div class="d-block-flex d-md-flex flex-col p-2 text-center text-md-left align-self-center">
 							
-												<input  type="number" min="1" max="10" style="min-width: 300px; max-height: 40px" class="form-control" id="itemAmount">
+												<input name="itemAmount" type="number" min="1" max="10" style="min-width: 300px; max-height: 40px" class="form-control" id="itemAmount" required>
 											</div>
 										</div>
 
@@ -86,7 +87,7 @@
 											</div>
 											<div class="d-block-flex d-md-flex flex-col p-2 text-center text-md-left align-self-center">
 				
-												<input type="text" style="min-width: 300px; max-height: 40px" class="form-control w-100" id="itemOrderBy">
+												<input type="text" name="itemOrderBy" style="min-width: 300px; max-height: 40px" class="form-control w-100" id="itemOrderBy" required>
 											</div>
 										</div>
 
@@ -95,14 +96,16 @@
 												<div class="row PanelElement" style="justify-content: center">
 													<button 
 													id="orderNow"
+													type="submit"
 													class="btn btn-lg btn-Order g-recaptcha"
 													data-sitekey="6LeEjjEUAAAAADvHEKMPTNTW20cflb0YOsdYZSlw"
-													data-callback="onSubmit">
+													data-callback="onSubmit"
+													disabled=true>
 													Add Suggestion
-												</button>
-											</div>
-										</div>
-
+												</button>												
+											</div>											
+										</div>								
+									</form>
 									</div>
 								</div>
 							</div>
