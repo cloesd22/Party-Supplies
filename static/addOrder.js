@@ -5,7 +5,7 @@ export function addOrder(data,callback){
 
 	data = JSON.stringify(data);
 	
-	serverPOST ('/add',null,data);
-	callback();
+	serverPOST ('/add',callback,data);
+	
 
 }

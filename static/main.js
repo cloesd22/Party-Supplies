@@ -92,7 +92,7 @@ window.onCaptcha = function(){
 			addOrder(userInput,()=>{
 				clearInputs();
 				refreshPanels(displayArea);
-		window.scrollTo(0, 0);
+				window.scrollTo(0, 0);
 		})
 	}else{
 		alert("Please limit names to letters and spaces. No symbols.");

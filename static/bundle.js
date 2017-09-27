@@ -240,7 +240,7 @@ window.onCaptcha = function(){
 			Object(__WEBPACK_IMPORTED_MODULE_4__addOrder__["a" /* addOrder */])(userInput,()=>{
 				clearInputs();
 				refreshPanels(displayArea);
-		window.scrollTo(0, 0);
+				window.scrollTo(0, 0);
 		})
 	}else{
 		alert("Please limit names to letters and spaces. No symbols.");
@@ -484,8 +484,8 @@ function addOrder(data,callback){
 
 	data = JSON.stringify(data);
 	
-	Object(__WEBPACK_IMPORTED_MODULE_0__xhttpFunctions_js__["b" /* serverPOST */]) ('/add',null,data);
-	callback();
+	Object(__WEBPACK_IMPORTED_MODULE_0__xhttpFunctions_js__["b" /* serverPOST */]) ('/add',callback,data);
+	
 
 }
 
