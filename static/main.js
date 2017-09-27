@@ -14,10 +14,10 @@ function winload(){
 	addfieldListeners();
 	//load up panels on start
 	refreshPanels(displayArea);
-	
-	
 
-
+	document.getElementById("orderNow").addEventListener("click",()=>{
+		window.onCaptcha();
+	})
 
 		
 }
@@ -45,8 +45,8 @@ function refreshPanels(display){
 
 }
 
-window.onCaptcha = function(token){
-
+/* window.onCaptcha = function(token){
+	//captcha misbehaving removed for now.
 	var doc = document;
 	var displayArea = document.getElementById("panelDisplay");
 	
@@ -81,6 +81,22 @@ window.onCaptcha = function(token){
 
 	},token);
 
+} */
+
+window.onCaptcha = function(){
+	//stand in temporary function
+	var doc = document;
+	var displayArea = document.getElementById("panelDisplay");
+	var userInput = getInput(doc);
+	if (validate(userInput,doc)){
+			addOrder(userInput,()=>{
+				refreshPanels(displayArea);
+				clearInputs();
+		window.scrollTo(0, 0);
+		})
+	}else{
+		alert("Please limit names to letters and spaces. No symbols.");
+	}
 }
 
 function addfieldListeners(){

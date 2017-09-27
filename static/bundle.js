@@ -162,10 +162,10 @@ function winload(){
 	addfieldListeners();
 	//load up panels on start
 	refreshPanels(displayArea);
-	
-	
 
-
+	document.getElementById("orderNow").addEventListener("click",()=>{
+		window.onCaptcha();
+	})
 
 		
 }
@@ -193,20 +193,20 @@ function refreshPanels(display){
 
 }
 
-window.onCaptcha = function(token){
-
+/* window.onCaptcha = function(token){
+	//captcha misbehaving removed for now.
 	var doc = document;
 	var displayArea = document.getElementById("panelDisplay");
 	
 	window.scrollTo(0, 0);
 
-	Object(__WEBPACK_IMPORTED_MODULE_1__xhttpFunctions_js__["b" /* serverPOST */])('/captcha',(res)=>{
+	serverPOST('/captcha',(res)=>{
 
 		var result = JSON.parse(res);
 		if(result.success==true){
-			var userInput = Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["a" /* getInput */])(doc);
-			if (Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["b" /* validate */])(userInput,doc)){
-				Object(__WEBPACK_IMPORTED_MODULE_4__addOrder__["a" /* addOrder */])(userInput,()=>{
+			var userInput = getInput(doc);
+			if (validate(userInput,doc)){
+				addOrder(userInput,()=>{
 					refreshPanels(displayArea);
 					clearInputs();
 					try{
@@ -229,6 +229,22 @@ window.onCaptcha = function(token){
 
 	},token);
 
+} */
+
+window.onCaptcha = function(){
+	//stand in temporary function
+	var doc = document;
+	var displayArea = document.getElementById("panelDisplay");
+	var userInput = Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["a" /* getInput */])(doc);
+	if (Object(__WEBPACK_IMPORTED_MODULE_3__inputAndValidate__["b" /* validate */])(userInput,doc)){
+			Object(__WEBPACK_IMPORTED_MODULE_4__addOrder__["a" /* addOrder */])(userInput,()=>{
+				refreshPanels(displayArea);
+				clearInputs();
+		window.scrollTo(0, 0);
+		})
+	}else{
+		alert("Please limit names to letters and spaces. No symbols.");
+	}
 }
 
 function addfieldListeners(){
@@ -443,7 +459,7 @@ function validate(inputObject,doc){
         }
 
         //Check of itemOrderBy field is a name
-        var regex = /^([A-Za-z0-9]{3,20})$/;
+        var regex = /^([A-Za-z0-9_ -]{3,20})$/;
         if (regex.test(itemOrderBy)==false){
         	doc.getElementById("validationMsgWho").value = "Please ensure 'Who' field only consists of 3 to 20 letters/numbers.";
             validation = false;

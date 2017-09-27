@@ -2,17 +2,20 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="../static/PSaaS.css">
-	<script src='https://www.google.com/recaptcha/api.js'></script>
+	<!-- <script src='https://www.google.com/recaptcha/api.js'></script> -->
 	<script type="text/javascript" src="../static/bundle.js"></script>
 	<script>
 
 		function onSubmit(token) {
 
-				window.onCaptcha(token);	
+				window.onCaptcha();	
+				//Button values.
+				//class="btn btn-lg btn-Order g-recaptcha"
+				//data-sitekey="6LeEjjEUAAAAADvHEKMPTNTW20cflb0YOsdYZSlw"
 		}
 
 		window.grecaptchaReset = function(){
-			grecaptcha.reset();
+			//grecaptcha.reset();
 		}
 
 	</script>
@@ -112,9 +115,8 @@
 													<button 
 													id="orderNow"
 													type="submit"
-													class="btn btn-lg btn-Order g-recaptcha"
-													data-sitekey="6LeEjjEUAAAAADvHEKMPTNTW20cflb0YOsdYZSlw"
-													data-callback="onSubmit"
+													class="btn btn-lg btn-Order"
+													
 													disabled=true>
 													Add Suggestion
 												</button>												

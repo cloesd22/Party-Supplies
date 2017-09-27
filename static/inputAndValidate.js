@@ -39,7 +39,7 @@ export function validate(inputObject,doc){
         }
 
         //Check of itemOrderBy field is a name
-        var regex = /^([A-Za-z0-9]{3,20})$/;
+        var regex = /^([A-Za-z0-9_ -]{3,20})$/;
         if (regex.test(itemOrderBy)==false){
         	doc.getElementById("validationMsgWho").value = "Please ensure 'Who' field only consists of 3 to 20 letters/numbers.";
             validation = false;
