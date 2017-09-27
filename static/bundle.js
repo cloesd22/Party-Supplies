@@ -166,11 +166,20 @@ function winload(){
 }
 window.onload = winload;
 
-
 function refreshPanels(display){
 	//refresh panels
+	var doc = document;
 	Object(__WEBPACK_IMPORTED_MODULE_0__listSyncMethods_js__["a" /* serverListSync */])().then((data)=>{
+        console.log(data.orderList.length > 0);
+	    if(data.orderList.length > 0){
+		    doc.getElementById("emptyText").style.display = 'none';
+		}else{
+		    doc.getElementById("emptyText").innerText = 'No one has suggested an order yet!';
+            doc.getElementById("emptyText").style.display = 'block';
+		}
+
 		var localServerList = JSON.stringify(data);
+
 		var displayString = Object(__WEBPACK_IMPORTED_MODULE_2__htmlDisplayDraw__["a" /* htmlDisplayDraw */])(localServerList)
 		display.innerHTML=(displayString);
 	})

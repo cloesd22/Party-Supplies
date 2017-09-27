@@ -18,11 +18,20 @@ function winload(){
 }
 window.onload = winload;
 
-
 function refreshPanels(display){
 	//refresh panels
+	var doc = document;
 	serverListSync().then((data)=>{
+        console.log(data.orderList.length > 0);
+	    if(data.orderList.length > 0){
+		    doc.getElementById("emptyText").style.display = 'none';
+		}else{
+		    doc.getElementById("emptyText").innerText = 'No one has suggested an order yet!';
+            doc.getElementById("emptyText").style.display = 'block';
+		}
+
 		var localServerList = JSON.stringify(data);
+
 		var displayString = htmlDisplayDraw(localServerList)
 		display.innerHTML=(displayString);
 	})
