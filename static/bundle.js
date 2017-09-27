@@ -174,7 +174,7 @@ window.onload = winload;
 function refreshPanels(display){
 	//refresh panels
 	var doc = document;
-	window.scrollTo(0, 0);
+	
 	Object(__WEBPACK_IMPORTED_MODULE_0__listSyncMethods_js__["a" /* serverListSync */])().then((data)=>{
         console.log(data.orderList.length > 0);
 	    if(data.orderList.length > 0){
@@ -198,7 +198,7 @@ window.onCaptcha = function(token){
 	var doc = document;
 	var displayArea = document.getElementById("panelDisplay");
 	
-	
+	window.scrollTo(0, 0);
 
 	Object(__WEBPACK_IMPORTED_MODULE_1__xhttpFunctions_js__["b" /* serverPOST */])('/captcha',(res)=>{
 
@@ -241,6 +241,12 @@ function addfieldListeners(){
 		}else{
 			document.getElementById('orderNow').disabled=true;
 		}
+
+		if(!(checknumericInput(document.getElementById('itemAmount').value))){
+			document.getElementById('orderNow').disabled=false;
+		}else{
+			document.getElementById('orderNow').disabled=true;
+		}
 	})
 	document.getElementById('itemOrderBy').addEventListener("keypress",()=>{
 		if((document.getElementById('itemAmount').value.length!=0)&&(document.getElementById('itemOrderBy').value.length!=0)){
@@ -258,6 +264,12 @@ function addfieldListeners(){
 		}else{
 			document.getElementById('orderNow').disabled=true;
 		}
+		
+		if(!(checknumericInput(document.getElementById('itemAmount').value))){
+			document.getElementById('orderNow').disabled=false;
+		}else{
+			document.getElementById('orderNow').disabled=true;
+		}
 	})
 	document.getElementById('itemOrderBy').addEventListener("blur",()=>{
 		if((document.getElementById('itemAmount').value.length!=0)&&(document.getElementById('itemOrderBy').value.length!=0)){
@@ -272,6 +284,14 @@ function addfieldListeners(){
 function clearInputs(){
 	document.getElementById('itemAmount').value="";
 	document.getElementById('itemOrderBy').value="";
+}
+
+function checknumericInput(value){
+	if(value>10||value<1){
+		return false;
+	}else{
+		return true;
+	}
 }
 
 /***/ }),
